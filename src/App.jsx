@@ -1,7 +1,5 @@
+import Test3 from "./components/Test3"; // 경로 확인
 const App = () => {
-  return (
-    <div className=''>Hello World</div>
-  )
-}
-
-export default App
+  return <Test3 />;
+};
+export default App;
