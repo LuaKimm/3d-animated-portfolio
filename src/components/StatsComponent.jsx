@@ -1,23 +1,32 @@
-// src/components/StatsComponent.jsx
+// ✅ src/components/StatsComponent.jsx
 import { useEffect } from "react";
-
-// 📌 완전한 경로 import - 절대 모듈 이름 아님
-import Stats from "../../node_modules/three/examples/jsm/libs/stats.module.js";
 
 const StatsComponent = () => {
   useEffect(() => {
-    const stats = new Stats();
-    stats.showPanel(0);
-    document.body.appendChild(stats.dom);
+    let stats;
 
-    const animate = () => {
-      stats.update();
+    (async () => {
+      const imported = await import("stats.js");
+      const Stats = imported.default || imported; // <-- 핵심!
+
+      stats = new Stats();
+      stats.showPanel(0);
+      document.body.appendChild(stats.dom);
+
+      const animate = () => {
+        stats.begin();
+        // 여기에 3D 애니메이션 렌더링 같은 작업이 들어가면 좋아요.
+        stats.end();
+        requestAnimationFrame(animate);
+      };
+
       requestAnimationFrame(animate);
-    };
-    animate();
+    })();
 
     return () => {
-      document.body.removeChild(stats.dom);
+      if (stats && stats.dom && document.body.contains(stats.dom)) {
+        document.body.removeChild(stats.dom);
+      }
     };
   }, []);
 

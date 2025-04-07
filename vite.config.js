@@ -5,7 +5,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  optimizeDeps: {
-    exclude: ["@react-three/drei"],
-  },
+  // optimizeDeps: {
+  //   exclude: ["@react-three/drei"],
+  // },
 });
