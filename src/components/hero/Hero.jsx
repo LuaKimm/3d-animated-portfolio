@@ -1,11 +1,9 @@
-import { animate, easeInOut } from "motion";
+import { Canvas } from "@react-three/fiber";
 import "./hero.css";
 import Speech from "./Speech";
 import { motion } from "motion/react";
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
 import Shape from "./Shape";
-import StatsComponent from "../../components/StatsComponent";
+import { Suspense } from "react";
 
 const awardVariants = {
   initial: {
@@ -21,6 +19,7 @@ const awardVariants = {
     },
   },
 };
+
 const followVariants = {
   initial: {
     y: -100,
@@ -40,18 +39,18 @@ const Hero = () => {
   return (
     <div className="hero">
       <div className="hSection left">
-        {/*TITLE*/}
+        {/* TITLE */}
         <motion.h1
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
           className="hTitle"
         >
-          Hey, There,
+          Hey There,
           <br />
-          <span>I'm Lua!</span>
+          <span>I'm Robert!</span>
         </motion.h1>
-        {/*AWARDS*/}
+        {/* AWARDS */}
         <motion.div
           variants={awardVariants}
           initial="initial"
@@ -60,9 +59,9 @@ const Hero = () => {
         >
           <motion.h2 variants={awardVariants}>Top Rated Designer</motion.h2>
           <motion.p variants={awardVariants}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </motion.p>
-          <motion.div className="awardList">
+          <motion.div variants={awardVariants} className="awardList">
             <motion.img variants={awardVariants} src="/award1.png" alt="" />
             <motion.img variants={awardVariants} src="/award2.png" alt="" />
             <motion.img variants={awardVariants} src="/award3.png" alt="" />
@@ -74,7 +73,7 @@ const Hero = () => {
           transition={{
             repeat: Infinity,
             duration: 4,
-            ease: easeInOut,
+            ease: "easeInOut",
           }}
           href="#services"
           className="scroll"
@@ -144,7 +143,7 @@ const Hero = () => {
         </motion.div>
         {/* CONTACT BUTTON */}
         <motion.a
-          href="#contact"
+          href="/#contact"
           className="contactLink"
           animate={{
             x: [200, 0],
@@ -153,56 +152,56 @@ const Hero = () => {
           transition={{
             duration: 2,
           }}
-        ></motion.a>
-        <motion.div
-          className="contactButton"
-          animate={{ rotate: [0, 360] }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "linear",
-          }}
         >
-          <svg viewBox="0 0 200 200" width="150" height="150">
-            <circle cx="100" cy="100" r="90" fill="pink" />
-            <path
-              id="innerCirclePath"
-              fill="none"
-              d="M 100,100 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0"
-            />
-            <text className="circleText">
-              <textPath href="#innerCirclePath">Hire Now</textPath>
-            </text>
-            <text className="circleText">
-              <textPath href="#innerCirclePath" startOffset="44%">
-                Contact Me
-              </textPath>
-            </text>
-          </svg>
-          <div className="arrow">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="50"
-              height="50"
-              fill="none"
-              stroke="black"
-              strokeWidth="2"
-            >
-              <line x1="6" y1="18" x2="18" y2="6" />
-              <polyline points="9 6 18 6 18 15" />
+          <motion.div
+            className="contactButton"
+            animate={{ rotate: [0, 360] }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            <svg viewBox="0 0 200 200" width="150" height="150">
+              <circle cx="100" cy="100" r="90" fill="pink" />
+              <path
+                id="innerCirclePath"
+                fill="none"
+                d="M 100,100 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0"
+              />
+              <text className="circleText">
+                <textPath href="#innerCirclePath">Hire Now •</textPath>
+              </text>
+              <text className="circleText">
+                <textPath href="#innerCirclePath" startOffset="44%">
+                  Contact Me •
+                </textPath>
+              </text>
             </svg>
-          </div>
-        </motion.div>
+            <div className="arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="50"
+                height="50"
+                fill="none"
+                stroke="black"
+                strokeWidth="2"
+              >
+                <line x1="6" y1="18" x2="18" y2="6" />
+                <polyline points="9 6 18 6 18 15" />
+              </svg>
+            </div>
+          </motion.div>
+        </motion.a>
       </div>
       <div className="bg">
-        {/* 3d    */}
+        {/* 3d */}
         <Canvas>
           <Suspense fallback="loading...">
             <Shape />
           </Suspense>
         </Canvas>
-        <StatsComponent />
         <div className="hImg">
           <img src="/hero.png" alt="" />
         </div>

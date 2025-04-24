@@ -37,10 +37,6 @@
   justify-content: space-between;
 }
 
-.hSection.right {
-  align-items: end;
-}
-
 .hTitle {
   margin-top: 50px;
   font-size: 100px;
@@ -160,7 +156,7 @@
 }
 
 .contactLink {
-  margin: 50px;
+  margin-bottom: 50px;
 }
 
 .contactButton {
@@ -198,6 +194,7 @@
     top: auto;
     bottom: 0;
   }
+
   .hImg {
     height: 100%;
   }
@@ -214,6 +211,7 @@
     width: 100%;
   }
 }
+
 @media (max-width: 1024px) {
   .bg {
     height: 50%;
